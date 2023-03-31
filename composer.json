@@ -1,0 +1,21 @@
+{
+    "name": "kingsoft/db",
+    "description": "PDO Database wrapper",
+    "type": "library",
+    "require": {
+        "kingsoft/utils": "^1.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kingsoft\\Db\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "theking2",
+            "email": "theking2@king.ma"
+        }
+    ],
+    "minimum-stability": "RC"
+}
