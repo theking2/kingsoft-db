@@ -10,9 +10,6 @@
         "psr-4": {
             "Kingsoft\\Db\\": "src/"
         },
-        "files": [
-            "src/setting.ini_sample"
-        ]
     },
     "authors": [
         {
