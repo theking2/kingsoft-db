@@ -22,16 +22,19 @@ final class Database
 	 */
 	private function __construct()
 	{
+		$dsn = SETTINGS['db']['dsn']??
+			'mysql:host=' . SETTINGS['db']['server'] . ';dbname=' . SETTINGS['db']['dbname'];
+			$dsh
+		}
 		try {
 			$this->connection = new \PDO(
 				SETTINGS['db']['dsn'],
-				SETTINGS['db']['user'],
-				SETTINGS['db']['passwort'],
+				SETTINGS['db']['dbuser'],
+				SETTINGS['db']['dbpass'],
 				[
 					\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
 					\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_BOUND,
 					\PDO::ATTR_ERRMODE => \PDO::ERRMODE_SILENT,
-					\PDO::ATTR_PERSISTENT => true,
 					\PDO::ATTR_EMULATE_PREPARES => false
 				]
 			);
