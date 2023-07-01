@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 namespace Kingsoft\Persist\DB;
-use const \Kingsoft\Utils\Settings\SETTINGS;
+use const SETTINGS;
 
 /**
  * Database – Singelton class for database access
  */
 final class Database
 {
-	/** @param \DB\Database $db */
+	/** @param Database $db */
 	private static $db;      // Instance of Database
 	/** @param \PDO $connection */
 	private \PDO $connection;     // PDO Connection
@@ -24,8 +24,7 @@ final class Database
 	{
 		$dsn = SETTINGS['db']['dsn']??
 			'mysql:host=' . SETTINGS['db']['server'] . ';dbname=' . SETTINGS['db']['dbname'];
-			$dsh
-		}
+
 		try {
 			$this->connection = new \PDO(
 				SETTINGS['db']['dsn'],
