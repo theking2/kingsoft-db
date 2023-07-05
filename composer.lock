@@ -4,50 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f74e4bce2c064d2c808a0e6bc9b56cf3",
-    "packages": [
-        {
-            "name": "kingsoft/utils",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/theking2/utils.git",
-                "reference": "9c43d5ded71c044f2ad3f9f1364af41c789c986a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/theking2/utils/zipball/9c43d5ded71c044f2ad3f9f1364af41c789c986a",
-                "reference": "9c43d5ded71c044f2ad3f9f1364af41c789c986a",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/utils.php",
-                    "src/web.php"
-                ],
-                "psr-4": {
-                    "Kingsoft\\Utils\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "mit"
-            ],
-            "authors": [
-                {
-                    "name": "theking2",
-                    "email": "theking2@king.ma"
-                }
-            ],
-            "description": "General Utils",
-            "support": {
-                "issues": "https://github.com/theking2/utils/issues",
-                "source": "https://github.com/theking2/utils/tree/1.0.0"
-            },
-            "time": "2023-03-31T09:28:59+00:00"
-        }
-    ],
+    "content-hash": "deabe042ab18a85fcad0e778485b9a83",
+    "packages": [],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "RC",
@@ -56,5 +14,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
