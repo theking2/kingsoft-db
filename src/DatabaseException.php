@@ -1,13 +1,6 @@
 <?php declare(strict_types=1);
-/**
- * Exception - Stub für einfacher Zugang Exception kalse
- * @package db
- * @version $i$d 
- * @author Johannes Kingma jkingma@sbw-media.ch
- * @copyright 2013 SBWNMAG
- */
 
-namespace Kingsoft\DB;
+namespace Kingsoft\Db;
 
 /**
  * DatabaseException

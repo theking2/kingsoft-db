@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kingsoft\DB;
+namespace Kingsoft\Db;
 
 if( !defined( 'SETTINGS_FILE' ) ) {
 	define( 'SETTINGS_FILE', $_SERVER['DOCUMENT_ROOT'] . '/settings.ini' );
