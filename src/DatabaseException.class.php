@@ -7,7 +7,7 @@
  * @copyright 2013 SBWNMAG
  */
 
-namespace Kingsoft\Persist\DB;
+namespace Kingsoft\DB;
 
 /**
  * DatabaseException
