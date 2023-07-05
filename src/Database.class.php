@@ -27,7 +27,7 @@ final class Database
 
 		try {
 			$this->connection = new \PDO(
-				SETTINGS['db']['dsn'],
+				$dsn,
 				SETTINGS['db']['dbuser'],
 				SETTINGS['db']['dbpass'],
 				[
