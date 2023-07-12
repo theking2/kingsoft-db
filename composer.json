@@ -1,6 +1,6 @@
 {
     "name": "kingsoft/db",
-    "description": "PDO Database wrapper",
+    "description": "Efficient PDO Database connection wrapper. Reads settings from settings.ini/SETTINGS global constaant",
     "type": "library",
     "license": "MIT",
     "autoload": {
