@@ -28,18 +28,17 @@ final class Database
 	private function __construct()
 	{
 		$dsn = SETTINGS['db']['dsn'] ??
-			'mysql:host=' . SETTINGS['db']['server'] . ';dbname=' . SETTINGS['db']['dbname'];
+			'mysql:host=' . SETTINGS['db']['hostname'] . ';dbname=' . SETTINGS['db']['database'];
 
 		try {
 			$this->connection = new \PDO(
 				$dsn,
-				SETTINGS['db']['dbuser'],
-				SETTINGS['db']['dbpass'],
+				SETTINGS['db']['username'],
+				SETTINGS['db']['password'],
 				[ 
 					\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
 					\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_BOUND,
-					\PDO::ATTR_ERRMODE => \PDO::ERRMODE_SILENT,
-					\PDO::ATTR_EMULATE_PREPARES => false
+					\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
 				]
 			);
 		} catch ( \PDOException $e ) {
