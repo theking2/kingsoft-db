@@ -4,15 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "deabe042ab18a85fcad0e778485b9a83",
-    "packages": [],
+    "content-hash": "0ad1f3d78852d32c336b23e20288ab62",
+    "packages": [
+        {
+            "name": "kingsoft/utils",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theking2/kingsoft-utils.git",
+                "reference": "ea4c916d94ba2ea4157cae7ef9fef7628b6d1328"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theking2/kingsoft-utils/zipball/ea4c916d94ba2ea4157cae7ef9fef7628b6d1328",
+                "reference": "ea4c916d94ba2ea4157cae7ef9fef7628b6d1328",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kingsoft\\Utils\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "authors": [
+                {
+                    "name": "theking2",
+                    "email": "theking2@king.ma"
+                }
+            ],
+            "description": "General and easy to use utility functions for PHP. Used in many other Kingsoft packages.",
+            "support": {
+                "issues": "https://github.com/theking2/kingsoft-utils/issues",
+                "source": "https://github.com/theking2/kingsoft-utils/tree/2.6.5"
+            },
+            "time": "2024-01-17T18:20:54+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "RC",
-    "stability-flags": [],
+    "stability-flags": {
+        "kingsoft/utils": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=8.0"
+    },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
