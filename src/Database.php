@@ -29,7 +29,7 @@ if( !defined( 'SETTINGS' ) ) {
 final class Database
 {
 	/** @param Database $db */
-	private static $db; // Instance of Database
+	private static ?Database $db = null; // Instance of Database
 	/** @param \PDO $connection */
 	private \PDO $connection; // PDO Connection
 
