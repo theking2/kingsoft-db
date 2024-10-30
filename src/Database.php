@@ -5,13 +5,26 @@ declare(strict_types=1);
 namespace Kingsoft\Db;
 
 if( !defined( 'SETTINGS_FILE' ) ) {
-	define( 'SETTINGS_FILE', $_SERVER['DOCUMENT_ROOT'] . '/settings.ini' );
+	define( 'SETTINGS_FILE', $_SERVER[ 'DOCUMENT_ROOT' ] . '/settings.ini' );
 }
 if( !defined( 'SETTINGS' ) ) {
 	define( 'SETTINGS', parse_ini_file( SETTINGS_FILE, true ) );
 }
 /**
- * Database – Singelton class for database access
+ * Singelton class for database access
+ * The connection is a PDO object
+ * Connection parameters are read from the SETTINGS['db'] array containing:
+ * - hostname
+ * - database
+ * - username
+ * - password
+ * - dsn (optional)
+ * 
+ * The connection has the following options set:
+ * - charset=utf8
+ * - default fetch mode is FETCH_BOUND
+ * - error mode is ERRMODE_EXCEPTION
+ * 
  */
 final class Database
 {
@@ -27,18 +40,18 @@ final class Database
 	 */
 	private function __construct()
 	{
-		$dsn = SETTINGS['db']['dsn'] ??
-			'mysql:host=' . SETTINGS['db']['hostname'] . ';dbname=' . SETTINGS['db']['database'];
+		$dsn = SETTINGS[ 'db' ][ 'dsn' ] ??
+			'mysql:host=' . SETTINGS[ 'db' ][ 'hostname' ] . ';dbname=' . SETTINGS[ 'db' ][ 'database' ];
 
 		try {
 			$this->connection = new \PDO(
 				$dsn,
-				SETTINGS['db']['username'],
-				SETTINGS['db']['password'],
+				SETTINGS[ 'db' ][ 'username' ],
+				SETTINGS[ 'db' ][ 'password' ],
 				[ 
 					\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
 					\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_BOUND,
-					\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
+					\PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION
 				]
 			);
 		} catch ( \PDOException $e ) {
@@ -65,6 +78,6 @@ final class Database
 	 */
 	public function getException(): DatabaseException
 	{
-		return new DatabaseException( 0x2100, null, $this->connection->errorInfo()[2] );
+		return new DatabaseException( 0x2100, null, $this->connection->errorInfo()[ 2 ] );
 	}
 }
