@@ -18,11 +18,6 @@ class DatabaseException extends \Exception {
 			
 	/**
 	 * __construct
-	 *
-	 * @param  int $code
-	 * @param  \Exception $previous
-	 * @param  string $message
-	 * @return \Persist\DB\DatabaseException
 	 */
 	public function __construct (int $code, ?\Exception $previous = NULL, ?string $message = NULL )
 	{

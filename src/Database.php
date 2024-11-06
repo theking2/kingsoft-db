@@ -41,7 +41,11 @@ final class Database
 	private function __construct()
 	{
 		$dsn = SETTINGS[ 'db' ][ 'dsn' ] ??
-			'mysql:host=' . SETTINGS[ 'db' ][ 'hostname' ] . ';dbname=' . SETTINGS[ 'db' ][ 'database' ];
+			sprintf(
+				'mysql:host=%s;dbname=%s;charset=utf8',
+				SETTINGS[ 'db' ][ 'hostname' ],
+				SETTINGS[ 'db' ][ 'database' ]
+			);
 
 		try {
 			$this->connection = new \PDO(
@@ -49,7 +53,7 @@ final class Database
 				SETTINGS[ 'db' ][ 'username' ],
 				SETTINGS[ 'db' ][ 'password' ],
 				[ 
-					\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
+					// \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
 					\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_BOUND,
 					\PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION
 				]
