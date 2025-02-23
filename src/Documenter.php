@@ -4,16 +4,16 @@ namespace Kingsoft\Db;
 
 readonly class Documenter
 {
-    private \PDO $connection; 
-    public function __construct( private Database $db, private string $dbname )
-    { 
-        $this->connection = $db->getConnection();
+    private \PDO $connection;
+    public function __construct( private Database $database, private string $dbname )
+    {
+        $this->connection = $database->getConnection();
     }
 
     public function do_table( string $name ): self
     {
         $query  = "SHOW CREATE TABLE `$name`";
-        $result = $this->connection->query( $query );
+        $result = $this->connection->query( $query, \PDO::FETCH_ASSOC );
         if( !is_dir( "./tables" ) ) {
             mkdir( "./tables", 0777, true );
         }
@@ -37,7 +37,7 @@ readonly class Documenter
     public function do_view( string $name ): self
     {
         $query  = "SHOW CREATE VIEW `$name`";
-        $result = $this->connection->query( $query );
+        $result = $this->connection->query( $query, \PDO::FETCH_ASSOC );
         if( !is_dir( "./views" ) ) {
             mkdir( "./views", 0777, true );
         }
@@ -62,7 +62,7 @@ readonly class Documenter
     public function do_routines( string $type, string $name ): self
     {
         $query  = "SHOW CREATE $type `$name`";
-        $result = $this->connection->query( $query );
+        $result = $this->connection->query( $query, \PDO::FETCH_ASSOC );
         if( !is_dir( "./$type" ) ) {
             mkdir( "./$type", 0777, true );
         }
@@ -93,7 +93,7 @@ readonly class Documenter
     {
         echo "<h1>Procedures</h1>
         <ul>";
-        foreach( $this->connection->query( "SHOW PROCEDURE STATUS WHERE Db = '{$this->dbname}'" ) as $row ) {
+        foreach( $this->connection->query( "SHOW PROCEDURE STATUS WHERE Db = '{$this->dbname}'", \PDO::FETCH_ASSOC) as $row ) {
             $this->do_routines( "Procedure", $row["Name"] );
         }
         echo "</ul>";
@@ -105,7 +105,7 @@ readonly class Documenter
     {
         echo "<h1>Functions</h1>
         <ul>";
-        foreach( $this->connection->query( "SHOW FUNCTION STATUS WHERE Db = '{$this->dbname}'" ) as $row ) {
+        foreach( $this->connection->query( "SHOW FUNCTION STATUS WHERE Db = '{$this->dbname}'", \PDO::FETCH_ASSOC ) as $row ) {
             $this->do_routines( "Function", $row["Name"] );
         }
         echo "</ul>";
@@ -116,13 +116,13 @@ readonly class Documenter
     {
         echo "<h1>Tables</h1>
         <ul>";
-        foreach( $this->connection->query( "SHOW FULL TABLES WHERE Table_type='BASE TABLE'" ) as $row ) {
+        foreach( $this->connection->query( "SHOW FULL TABLES WHERE Table_type='BASE TABLE'", \PDO::FETCH_NUM ) as $row ) {
             $this->do_table( $row[0] );
         }
         echo "</ul>";
         echo "<h1>Views</h1>
         <ul>";
-        foreach( $this->connection->query( "SHOW FULL TABLES WHERE Table_type='VIEW'" ) as $row ) {
+        foreach( $this->connection->query( "SHOW FULL TABLES WHERE Table_type='VIEW'", \PDO::FETCH_NUM ) as $row ) {
             $this->do_view( $row[0] );
         }
         echo "</ul>";
