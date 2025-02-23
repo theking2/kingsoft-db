@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Kingsoft\Db;
 
 if( !defined( 'SETTINGS_FILE' ) ) {
-	define( 'SETTINGS_FILE', $_SERVER[ 'DOCUMENT_ROOT' ] . '/settings.ini' );
+	define( 'SETTINGS_FILE', $_SERVER['DOCUMENT_ROOT'] . '/settings.ini' );
 }
 if( !defined( 'SETTINGS' ) ) {
 	define( 'SETTINGS', parse_ini_file( SETTINGS_FILE, true ) );
@@ -40,19 +40,19 @@ final class Database
 	 */
 	private function __construct()
 	{
-		$dsn = SETTINGS[ 'db' ][ 'dsn' ] ??
+		$dsn = SETTINGS['db']['dsn'] ??
 			sprintf(
 				'mysql:host=%s;dbname=%s;charset=utf8',
-				SETTINGS[ 'db' ][ 'hostname' ],
-				SETTINGS[ 'db' ][ 'database' ]
+				SETTINGS['db']['hostname'],
+				SETTINGS['db']['database']
 			);
 
 		try {
 			$this->connection = new \PDO(
 				$dsn,
-				SETTINGS[ 'db' ][ 'username' ],
-				SETTINGS[ 'db' ][ 'password' ],
-				[ 
+				SETTINGS['db']['username'],
+				SETTINGS['db']['password'],
+				[
 					// \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
 					\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_BOUND,
 					\PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION
@@ -82,6 +82,6 @@ final class Database
 	 */
 	public function getException(): DatabaseException
 	{
-		return new DatabaseException( 0x2100, null, $this->connection->errorInfo()[ 2 ] );
+		return new DatabaseException( 0x2100, null, $this->connection->errorInfo()[2] );
 	}
 }
