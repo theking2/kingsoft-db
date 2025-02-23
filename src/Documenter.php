@@ -4,10 +4,8 @@ namespace Kingsoft\Db;
 
 readonly class Documenter
 {
-    private \PDO $connection;
-    public function __construct( private Database $database, private string $dbname )
+    public function __construct( private \PDO $connection, private string $dbname )
     {
-        $this->connection = $database->getConnection();
     }
 
     public function do_table( string $name ): self
