@@ -64,16 +64,25 @@ final class Database
 	}
 
 	/**
+	 * get the instance of the Database
+	 * @return Database|null
+	 */
+	public static function getInstance(): Database
+	{
+		if( static::$db == null ) {
+			static::$db = new Database();
+		}
+		return static::$db;
+	}
+
+	/**
 	 * Retrieve the connection object
 	 * construct the first time
 	 * @return \PDO
 	 */
 	public static function getConnection(): \PDO
 	{
-		if( static::$db == null ) {
-			static::$db = new Database();
-		}
-		return static::$db->connection;
+		return static::getInstance()->connection;
 	}
 
 	/**
