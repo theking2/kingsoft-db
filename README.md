@@ -23,3 +23,24 @@ database=database
 username=username
 password=password
 ```
+
+
+# Documenter
+
+A simple database documenter generaring the code to create tables, view, procedure and functions. Make sure the DB user has the proper rights to create these otherwise the result will be empty
+
+## Sample
+
+```php
+$dsn        = "mysql:host=" . SETTINGS['db']['hostname'] . ";dbname=" . SETTINGS['db']['database'];
+$connection = new PDO(
+    $dsn,
+    SETTINGS['db']['username'],
+    SETTINGS['db']['password'] );
+$documenter = ( new \Documenter( $connection, SETTINGS['db']['database'] ) )
+    ->do_tables()
+    ->do_procedures()
+    ->do_functions()
+;
+```
+
