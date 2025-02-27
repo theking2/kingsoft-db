@@ -2,7 +2,7 @@
 
 namespace Kingsoft\Db;
 
-readonly class Documenter
+readonly class Documentor
 {
     public function __construct( private \PDO $connection, private string $dbname )
     {
