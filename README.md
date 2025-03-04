@@ -37,7 +37,7 @@ $connection = new PDO(
     $dsn,
     SETTINGS['db']['username'],
     SETTINGS['db']['password'] );
-$documenter = ( new \Documenter( $connection, SETTINGS['db']['database'] ) )
+$documentor = ( new \Documentor( $connection, SETTINGS['db']['database'] ) )
     ->do_tables()
     ->do_procedures()
     ->do_functions()
