@@ -23,10 +23,8 @@ readonly class Documentor
             $fh     = fopen( "./tables/$name.sql", "w" );
 
             fwrite( $fh, "DROP TABLE IF EXISTS `$name`;\r\n\r\n" );
-            fwrite( $fh, "DELIMITER #\r\n" );
             fwrite( $fh, str_replace( '\n', DIRECTORY_SEPARATOR, $source ) );
-            fwrite( $fh, "#\r\n" );
-            fwrite( $fh, "# DELIMITER ;\r\n" );
+            fwrite( $fh, ";\r\n" );
             fclose( $fh );
         }
 
@@ -48,10 +46,8 @@ readonly class Documentor
             $fh     = fopen( "./views/$name.sql", "w" );
 
             fwrite( $fh, "DROP VIEW IF EXISTS `$name`;\r\n\r\n" );
-            fwrite( $fh, "DELIMITER #\r\n" );
             fwrite( $fh, str_replace( '\n', DIRECTORY_SEPARATOR, $source ) );
-            fwrite( $fh, "#\r\n" );
-            fwrite( $fh, "# DELIMITER ;\r\n" );
+            fwrite( $fh, ";\r\n" );
             fclose( $fh );
         }
 
